@@ -44,7 +44,7 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
       this.connectedUsers.delete(userId as string);
     }
   }
-
+// todo decide on id
   @SubscribeMessage('joinRoom')
   async handleJoinRoom(
     @MessageBody() { otherUserId }: { otherUserId: string },

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ObjectId, Repository, UpdateResult } from 'typeorm';
+import { Repository, UpdateResult } from 'typeorm';
 import { Chat, Message } from '../../entities/mongodb/chat.entity';
 
 @Injectable()
@@ -130,7 +130,7 @@ export class ChatService {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       where: { $or: [{ creatorId: userId }, { recipientId: userId }] },
-      order: { createdAt: 'DESC' },
+      order: { lastMessageTimestamp: 'DESC' },
     });
 
     return chatList;
